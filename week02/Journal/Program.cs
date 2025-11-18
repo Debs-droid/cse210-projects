@@ -19,10 +19,11 @@ class Program
             if (number == 1) //receive prompt and write in journal. press enter when finished
             {
                 string _prompt = p.GetRandomPrompt();
-                Console.WriteLine($"{_prompt}");
+                Console.WriteLine($"{_prompt}"); //the prompt displays in the console
                 Entry e = new Entry();
-                string _entry = Console.ReadLine();
-                e._entryText = _entry; 
+                //string _entry = Console.ReadLine();
+                //e._entryText = _entry;  //taking the temp variable ( _entry) and transfer it to the entry class variable which is _entryText
+                e._entryText = Console.ReadLine(); 
 
                 e._promptText = _prompt; //e._promptText is the variable, _prompt (the data is in _prompt)
                                 
@@ -30,15 +31,15 @@ class Program
                 string dateText = theCurrentTime.ToShortDateString();
                 e._date = dateText;
 
-
+                //add entry e to journal list--this is built in 22-26 ish
+                j.AddEntry(e);
 
             }
-            else if (number == 2) //display all journal entries--iterate through and display all entries
+            else if (number == 2) //display all journal entries--iterate through and display all entries--journal object, which has list of entries stored inside it(this object is _entries)
             {
-                //Console.WriteLine($"Date: {date} - Prompt: {prompt}");
-                //Console.WriteLine($"{/* prompt from text file?*/}");
+                j.DisplayAll();
             }
-            else if (number == 3) //load journal entry  --do we have to load first, in order to display?
+            else if (number == 3) //load journal entry  --do we have to load first, in order to display?--takes them from journal text
             {
                 Console.WriteLine("What is the file name?");
 
@@ -50,7 +51,7 @@ class Program
             }
             else if (number == 5) //exit program--click run to start again
             {
-                System.Environment.Exit(1);
+                System.Environment.Exit(0);
             }
         }
     }
@@ -69,7 +70,7 @@ class Program
         {
             foreach (Entry e in entry)
             {
-                outputFile.WriteLine($"{e._date}~~{e._promptText}~~{e._entryText}"); //??--iwas watcing "reading and writing demo video" not sure if this is correct
+                outputFile.WriteLine($"{e._date}~~{e._promptText}~~{e._entryText}"); //??--i was watching "reading and writing demo video" not sure if this is correct
             }
         }
 
