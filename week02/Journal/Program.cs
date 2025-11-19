@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+
 class Program
 {
     static void Main(string[] args)
@@ -7,6 +8,7 @@ class Program
         Journal j = new Journal();
 
         PromptGenerator p = new PromptGenerator();
+
 
         while (true)
         {
@@ -23,15 +25,15 @@ class Program
                 Entry e = new Entry();
                 //string _entry = Console.ReadLine();
                 //e._entryText = _entry;  //taking the temp variable ( _entry) and transfer it to the entry class variable which is _entryText
-                e._entryText = Console.ReadLine(); 
+                e._entryText = Console.ReadLine();
 
                 e._promptText = _prompt; //e._promptText is the variable, _prompt (the data is in _prompt)
-                                
+
                 DateTime theCurrentTime = DateTime.Now;
                 string dateText = theCurrentTime.ToShortDateString();
                 e._date = dateText;
 
-                //add entry e to journal list--this is built in 22-26 ish
+                //add entry e to journal list--this is built in lines 22-26
                 j.AddEntry(e);
 
             }
@@ -44,36 +46,19 @@ class Program
                 Console.WriteLine("What is the file name?");
 
                 string filename = Console.ReadLine();
+
+                j.LoadFromFile(filename);
+
             }
+
             else if (number == 4) //Save to textfile journal.txt
             {
-                SaveToFile(j._entries);
+                j.SaveToFile();
             }
             else if (number == 5) //exit program--click run to start again
             {
                 System.Environment.Exit(0);
             }
         }
-    }
-
-
-    public static void SaveToFile(List<Entry> entry) //entry is the name it is referred to. j._entries is the object or particular instance
-    {
-
-        Console.WriteLine("What is the file name?");
-        string filename = Console.ReadLine();
-
-
-        Console.WriteLine("Saving to file...");
-
-        using (StreamWriter outputFile = new StreamWriter(filename))
-        {
-            foreach (Entry e in entry)
-            {
-                outputFile.WriteLine($"{e._date}~~{e._promptText}~~{e._entryText}"); //??--i was watching "reading and writing demo video" not sure if this is correct
-            }
-        }
-
-        Console.WriteLine("Your file has saved.");
     }
 }
