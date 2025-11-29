@@ -1,0 +1,37 @@
+Scripture
+    attributes: private?
+        _reference: Reference (data type is reference, the custom class we define)
+        _words: List<Word> --(data type is List<Word>--it is a list of word objects, not a list of strings)
+    Methods/functions:
+        HideRandomWords(numberToHide : int) : void  ---call word's hide and show and getdisplaytext methods?
+        GetDisplayText() : string
+        IsCompletelyHidden() : bool
+    Constructors: 
+        Pass String that is the text (not list<word> variable passed to constructor) needs to accept both reference and text of scripture
+        (Constructor has responsibility to create the list, split up the words in teh string to create Word objects of each word, and put them in a list)   
+
+Word
+    attributes:
+        _text: string --data type is string
+        _isHidden: bool
+    Methods/functions:
+        Hide() : void
+        Show() : void
+        IsHidden() : bool
+        GetDisplayText() : string
+    Constructors: 
+        Should 1 accept text of the word to save it as attribute; 2 set the initial visibility of the word (shown or hidden)Visible can be default   
+
+Reference
+    attributes:
+        _book: string (string)
+        _chapter: int 
+        _verse: int
+        _endVerse: int
+    Methods:
+        GetDisplayText() : string
+        Possible getters and setters
+    Constructors:    (name=class name; no return type; called automatically with "New" keyword; access modifiers--public/private; can take parameters or not)
+        2 constructors--one for single verse input, one for multiple verses--they will have different parameter lists
+        1--receive book, chapter, verse
+        2--book, chapter, start verse, end verse (this is called function overloading)

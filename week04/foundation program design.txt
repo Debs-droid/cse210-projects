@@ -1,0 +1,76 @@
+Youtube Abstraction Design
+
+Video Class --responsibility to store a list of comments //--done
+    attributes:
+        _title: string //--done
+        _author: string //--done
+        _length: int   //(in seconds)--done
+    Methods/functions:
+        CommentCount(): int
+        CommentList(): List<Comment> //done
+    Constructors: 
+        Video(title: string, author: string, length: int) //created
+        
+
+Comment Class --responsibility to track name of commenter, and text of comment
+    attributes:
+        _nameCommenter: string
+        _textComment: string
+    Methods/functions:
+        displayComment
+    Constructors:
+        Comment(name: string; comment: string)
+
+Program Class --responsibility to populate the lists, call and display 
+
+
+
+Online Ordering Encapsulation Design
+**Remember: private attributes, use getters, setters, constructors as needed. (no user interaction)
+
+Product Class 
+    attributes:
+        _productPrice: decimal
+    Methods: --calculate price = price per unit x quantity
+        totalPrice
+    Constructors: 
+
+
+Customer Class
+    attributes:
+
+    Methods:
+
+    Constructors:
+
+Address Class 
+    attributes:
+    --street address
+    --city
+    --state/providence
+    --country
+
+    Methods:
+    --return if in USA or no 
+    --return a string of all fields in one string (with newline characters where appropriate)
+
+    Constructors:  
+
+Order Class --contains a list of products and a customer. calculate total cost of order. return string for packing label. return string for shipping label.
+    attributes:
+    --
+
+    Methods: 
+    totalCost: decimal --Calculate total cost of order (which is sum of total cost of each product plus one-time shipping cost)
+    --return string for packing label (includes name and product id of each product in the order)
+    --return string for shipping label (name and address of customer)
+
+    Constructors:               
+
+
+Program Class
+    attributes:
+
+    Methods:--none! don't usually use methods in program class; just Main
+
+    Constructors: 
