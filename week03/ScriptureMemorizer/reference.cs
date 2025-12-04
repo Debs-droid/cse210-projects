@@ -20,9 +20,60 @@ public class Reference
         _endVerse = endVerse;
     }
 
-    public string GetDisplayText()
+    public string GetBook() //getter for _book variable
     {
+        return _book;
+    }
 
+    public void SetBook(string book) //setter for _book variable
+    {
+        _book = book;
+    }
+
+    public int GetChapter() //getter for _chapter variable
+    {
+        return _chapter;
+    }
+
+    public void SetChapter(int chapter) //setter for _chapter variable
+    {
+        _chapter = chapter;
+    }
+
+    public int GetVerse()
+    {
+        return _verse;
+    }
+
+    public void SetVerse(int verse)
+    {
+        _verse = verse;
+    }
+
+    public int GetEndVerse()
+    {
+        return _endVerse;
+    }
+
+    public void SetEndVerse(int endVerse)
+    {
+        _endVerse = endVerse;
+    }
+
+
+
+    public string GetDisplayText() //method to return 
+    {
+        if (_endVerse == 0)
+        {
+            return $"{_book} {_chapter}: {_verse}";
+        }
+        else
+        {
+            return $"{_book} {_chapter}: {_verse}-{_endVerse}";
+        }
     }
 
 }
+
+//reference class gets the display text using the constructor
