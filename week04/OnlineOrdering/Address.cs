@@ -14,7 +14,7 @@ class Address
         _state = state;
         _country = country;
     }
-    
+
     public string GetStreet() //getter
     {
         return _street;

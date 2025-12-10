@@ -29,7 +29,7 @@ Reference
         _verse: int
         _endVerse: int
     Methods:
-        GetDisplayText() : string
+        GetDisplayText() : string (string combining book, chapter and verse)
         Possible getters and setters
     Constructors:    (name=class name; no return type; called automatically with "New" keyword; access modifiers--public/private; can take parameters or not)
         2 constructors--one for single verse input, one for multiple verses--they will have different parameter lists

@@ -9,15 +9,15 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Online Ordering Project.\n");
 
-        
+
         Customer customer1 = new Customer();
-        
+
         Address address1 = new Address("15 Pheasant Lane", "Bloomfield", "CT", "USA");
 
         customer1.SetName("Isabelle Stowell");
         customer1.SetAddress(address1);
 
-        
+
 
         List<Product> _product1 = new List<Product>();
         Order order1 = new Order(customer1, _product1);
