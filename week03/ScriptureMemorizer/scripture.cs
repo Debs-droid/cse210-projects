@@ -1,15 +1,18 @@
+using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
+
 public class Scripture
 {
     private Reference _reference; //attribute object created referring to reference class
     private List<Word> _words; //attribute--here a list of word objects, not a list of strings
 
-
+    //Word w = new Word("_", false);
     public Scripture(Reference reference, string text) //Constructor for single verse
     {
         _reference = reference;
-        
+
         _words = new List<Word>(); //create space for it to be populated 
-        string[] splitWords = text.Split(" ");
+        string[] splitWords = text.Split(" ");  //indexes have [] brackets 
 
         foreach (string splitWord in splitWords)
         {
@@ -18,11 +21,6 @@ public class Scripture
             _words.Add(newWord);
         }
 
-        
-        
-        
-        
-        //indexes have [] brackets 
     }
 
 
@@ -40,47 +38,46 @@ public class Scripture
     }
     public void SetWords(List<Word> text)
     {
-        _words = text; //is this the correct variable to use here? maybe i should call it words not wordList
+        _words = text;
     }
 
 
-    public void HideRandomWords() //method to hide words--how many words to hide each time, and replace _ for each word letter
+    public void HideRandomWords(int numHide) //--method to hide words--how many words to hide each time, and replace _ for each word letter
     {
-        List<Word> _wordList = new List<Word>();
-
-
-        /*while (text != "_") //?????
+        Random random = new Random();
+        for (int i = 0; i < numHide; i++)//++ means index is increment by 1
         {
-            //this is where i change the letters to _ 
+            int randomIndex = random.Next(_words.Count);
+            _words[randomIndex].Hide();
+
+        }
+    }
+
+    public string GetDisplayText() //what are the responsibilities--delivers 
+    {
+        string _constScrip = ""; //empty list
+
+        foreach (Word word in _words) //foreach needs 
+        {
+            _constScrip += $"{word.GetDisplayText()} ";
         }
 
-        Random random = new Random();
+        return _constScrip;
+    }
 
-        int randomIndex = random.Next(_wordList.Count);
+    public bool IsCompletelyHidden() //delivers quit //returns true if very word is hidden. yes, completely hidden=true; no, not all hidden=false;
+    {
+        //string _notShown = "_";
 
-        string randomWord = _wordList[randomIndex];
-
-        //this was from a google search of "c# random selection generator" so not correct in this context*/
-    } //need random number--generate it each time you call the function--what position to hide in the scripture; 
-      // while loop, 2 at a time; get the word, function IsHidden called from word class; check if it is hidden, call the function Hide
-
+        foreach (Word word in _words)
+        {
+            if (word.IsHidden() == false)  //not hidden--word is showing, passage not completely hidden.      --the quit (return;) is in IsHidden, so by referencing this, it should quit when all words are hidden.
+            {
+                return false; //not all the words are hidden--this stops the method and goes back to program.
+            }
+        }
+        return true;
+    }
 }
 
 
-/*public string GetDisplayText();
-public bool IsCompletelyHidden() //call function in word--create object
-{
-    if (_words = _) //either use == for boolean test, or ?
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}*/
-
-
-
-//attributes: member variables for reference (ref), list of words in the scripture
-//scripture class methods: hides random words, gets display text, and ends when all is completely hidden (bool)

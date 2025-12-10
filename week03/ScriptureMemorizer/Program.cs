@@ -1,32 +1,82 @@
 using System;
+using System.Net;
+using System.Net.Quic;
 
 class Program
 {
     static void Main(string[] args)
     {
+        Reference r = new Reference("Ether", 12, 27, 28);  //this has the class, the "handle", and the (new) instance is inside the ( )--the parameters are the new instance that is specified  
+        Scripture s = new Scripture(r, "If men come unto me I will show unto them their weakness.");
+
+
+        bool _funStuff = true;
+
+
+
+
         Console.WriteLine("Hello World! This is the Scripture Memorizer Project.");
+        Console.WriteLine("Press enter to continue or type 'quit' to finish.");
 
-        Reference reference = new Reference("Ether", 12, 27, 28);  //this has the class, the "handle", and the (new) instance is inside the ( )--the parameters are the new instance that is specified  
+        while (_funStuff == true) //while, if can both use == text with conditions that resolve to true or false
+        {
+            Console.WriteLine($"{r.GetDisplayText()}"); //shows the reference
+            Console.WriteLine($"{s.GetDisplayText()}");
 
-        //Scripture scripture = new Scripture(reference, "And if men come unto me I will show unto them their weakness. I give unto men weakness that they may be humble.");
+            if (s.IsCompletelyHidden() == true)
+            {
+                _funStuff = false;
+                //return; //this ends the program--this is the end anyway
+            }
 
-        //Scripture scripture1 = new Scripture(reference, "Words go here")
-        //{
-            //Console.WriteLine($"{scripture1}");
-        //}
+            s.HideRandomWords(2);
 
-        Console.WriteLine($"{reference.GetDisplayText()}");
+            //add the other stuff above here
+            Console.WriteLine("Do you want to continue? if yes, press enter. If no, type 'quit'.");
+            string _noFun = Console.ReadLine();
+            if (_noFun == "quit")
+            {
+                _funStuff = false;
+            }
 
-        Console.WriteLine("Men come unto me");
 
-        //Console.WriteLine($"{scripture.HideRandomWords()}");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 
-    //call methods that are already created
 
 }
 
+/*
+if (number == 1) //receive prompt and write in journal. press enter when finished
+            {
+                string _prompt = p.GetRandomPrompt();
+                Console.WriteLine($"{_prompt}"); //the prompt displays in the console
+                Entry e = new Entry();
+                //string _entry = Console.ReadLine();
+                //e._entryText = _entry;  //taking the temp variable ( _entry) and transfer it to the entry class variable which is _entryText
+                e._entryText = Console.ReadLine();
 
+                e._promptText = _prompt; //e._promptText is the variable, _prompt (the data is in _prompt)
+
+                DateTime theCurrentTime = DateTime.Now;
+                string dateText = theCurrentTime.ToShortDateString();
+                e._date = dateText;
+
+                //add entry e to journal list--this is built in lines 22-26
+                j.AddEntry(e);
+*/
 
 
 

@@ -24,7 +24,7 @@ public class Word
     {
         return _isHidden;
     }
-    public string GetDisplayText() 
+    public string GetDisplayText()
     {
         if (_isHidden)
         {
@@ -36,4 +36,4 @@ public class Word
         }
     }
 }
-//hide is supposed set _IsHidden to true; show sets it to false; gdt checks and returns
+//hide is supposed set _IsHidden to true; show sets it to false; checks and returns
