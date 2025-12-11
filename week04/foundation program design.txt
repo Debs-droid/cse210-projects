@@ -31,46 +31,53 @@ Online Ordering Encapsulation Design
 Product Class 
     attributes:
         _productPrice: decimal
+        _productId: int
+        _productPrice: double
+        _productQuantity: int
     Methods: --calculate price = price per unit x quantity
-        totalPrice
+        Getters
+        CalcProdCost(): double 
     Constructors: 
 
 
 Customer Class
     attributes:
+        _customerName: string
+        _address: Address (this attribute is a method from Customer())
 
     Methods:
+        Getters and setters
+        LiveInUSA(): bool 
 
-    Constructors:
+
+    Constructors: --yes, one
 
 Address Class 
-    attributes:
-    --street address
-    --city
-    --state/providence
-    --country
-
+    attributes: 
+    --street address: string
+    --city: string
+    --state/providence: string
+    --country: string
     Methods:
-    --return if in USA or no 
-    --return a string of all fields in one string (with newline characters where appropriate)
+    Getters and setters
+        AddressFormat(): string
+        InUSA(): bool 
 
-    Constructors:  
+    Constructors:  --yes, one
 
 Order Class --contains a list of products and a customer. calculate total cost of order. return string for packing label. return string for shipping label.
     attributes:
-    --
+        _customer: Customer()
+        _product: List<Product>
+    
 
     Methods: 
-    totalCost: decimal --Calculate total cost of order (which is sum of total cost of each product plus one-time shipping cost)
-    --return string for packing label (includes name and product id of each product in the order)
-    --return string for shipping label (name and address of customer)
+        Getter, setter
+        CalcTotalCost: decimal --Calculate total cost of order (which is sum of total cost of each product plus one-time shipping cost)
+        GetProdList: List<Product>
+        ShipLabel: string  --return string for packing label (includes name and product id of each product in the order)
+        PackLabe: string  --return string for shipping label (name and address of customer)
 
-    Constructors:               
+    Constructors:    --yes, one           
 
 
-Program Class
-    attributes:
-
-    Methods:--none! don't usually use methods in program class; just Main
-
-    Constructors: 
